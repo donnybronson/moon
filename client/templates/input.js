@@ -1,5 +1,7 @@
 Template.input.onCreated( function(){
   this.currentSystem= new ReactiveVar("metricInput");
+  // $('.skuo').addClass('toggle1');
+
 });
 // var _currentSystem= new ReactiveVar("metricInput");
 
@@ -9,25 +11,18 @@ Template.input.helpers({
     return  Template.instance().currentSystem.get();
 
   },
+  userUnit: function(){
+    var unitName = LocalData.findOne({role: "unitName"});
+      return unitName.name;
+  }
 
-// formSelector: function(){
-//   var updateForms= LocalData.findOne({role: "systemChoice"});
-//   console.log(updateForms);
-//
-//   console.log("system set to "+updateForms.choice);
-//   if(updateForms.choice=="metric"){
-// console.log(Template.metricInput);
-//     return {template : Template[Template.metricInput]};
-//   }else if(updateForms.choice=="imperial"){
-//     return Template.imperialInput;
-//   }else{
-//     console.log("choice not set");
-//   }
-//
-//
-// }
 
 });
+Template.input.rendered = function() {
+  $('.skuo').addClass('toggle2');
+}
+
+
 Template.input.events({
 'change #system1' : function(event){
 event.preventDefault();
@@ -52,31 +47,63 @@ event.preventDefault();
   // template.currentSystem.set("imperialInput");
   Template.instance().currentSystem.set("imperialInput");
   // _currentSystem.set("imperialInput");
-}
-});
-Template.generalInput.helpers({
-  mainUnitName: function(){
-    console.log("this.mainUnitName = "+this.mainUnitName);
-    return this.mainUnitName;
-  },
-  mainUnitId: function(){
-    return this.mainUnitId;
-  },
-  mainUnitPlaceholder: function(){
-    return this.mainUnitPlaceholder
-  },
-  secondUnitName: function(){
-    return this.secondUnitName
-  },
-  secondUnitId: function(){
-    return this.secondUnitId
-  },
-  seconsUnitPlaceholder: function(){
-    return this.seconsUnitPlaceholder
+},
+'click .skuo' : function(e){
+  e.preventDefault();
+  var updateSystem = LocalData.findOne({role: "systemChoice"});
+  var currentToggle=updateSystem.choice;
+  // var pole = Template.instance().currentSystem.get();
+  // console.log("current currentSystem set to "+ pole);
+
+  //this could all be crushed down to a  0/ 1 toggle and the use of an array
+
+  if( currentToggle == null ){
+    console.log("updateSystem set to null");//null is teh starting state and is treated as if its metric
+    LocalData.update( updateSystem._id , {$set: {choice: "imperial"}});
+    Template.instance().currentSystem.set("imperialInput");
+    $('.skuo').addClass('toggle1');
+    $('.skuo').removeClass('toggle2');
+  }else if (updateSystem.choice=="metric") {
+
+    LocalData.update( updateSystem._id , {$set: {choice: "imperial"}});
+    Template.instance().currentSystem.set("imperialInput");
+    $('.skuo').addClass('toggle1');
+    $('.skuo').removeClass('toggle2');
+  }else if (updateSystem.choice=="imperial") {
+    LocalData.update( updateSystem._id , {$set: {choice: "metric"}});
+    Template.instance().currentSystem.set("metricInput");
+    $('.skuo').addClass('toggle2');
+    $('.skuo').removeClass('toggle1');
+
   }
-
+  //toggle a css class
+  //set the tempate to the correct system
+}
 
 });
+// Template.generalInput.helpers({
+//   mainUnitName: function(){
+//     console.log("this.mainUnitName = "+this.mainUnitName);
+//     return this.mainUnitName;
+//   },
+//   mainUnitId: function(){
+//     return this.mainUnitId;
+//   },
+//   mainUnitPlaceholder: function(){
+//     return this.mainUnitPlaceholder
+//   },
+//   secondUnitName: function(){
+//     return this.secondUnitName
+//   },
+//   secondUnitId: function(){
+//     return this.secondUnitId
+//   },
+//   seconsUnitPlaceholder: function(){
+//     return this.seconsUnitPlaceholder
+//   }
+//
+//
+// });
 
 
 

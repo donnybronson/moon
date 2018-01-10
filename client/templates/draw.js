@@ -53,6 +53,14 @@ getUnitType: function(){
   // }
 }
 });
+//
+Template.draw.events({
+    'click .restart': function() {
+      Router.go("/");
+        //return startButton();
+    }
+});
+
 ////////// NON HELPER FUNCTIONS
 function metInputKM(){
   var cM = LocalData.findOne({system: "metric"});// the numbers input

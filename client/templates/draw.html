@@ -1,17 +1,27 @@
 <template name= "draw">
   <div class="spaceCont">
-
-  <div class= "copy jumbotron">
-So what we have done is create new unit called the  {{unitName}}.<br/>
-if we scale down the solar system so the distance to the moon is 1 {{unitName}}
-then we can look at the size of the earth and the moon on that scale too.
+  <!-- <div class="fade"> -->
+    <div class= "copy panel-body lightbox2">
+      <span class="bright labelMS">
+        <!-- <p> <span class="blackLabel "> So what we have done is create new unit called </span><span class="blueLabel">the {{unitName}}.</span></p> -->
+        <p><span class="blackLabel">Now we will measure the earth and moon on</span> <span class="blueLabel">the {{unitName}} scale</span></p>
+        <p><span class="blackLabel">To do that we will scale it all down until the average distance to the moon is </span> <span class="blueLabel">1 {{unitName}}</span><span class="blackLabel"> i.e the same as your height</span></p>
+        <p><span class="blackLabel">Now we can look at the size of the earth and the moon on that scale.</span></p>
+        <p><span class="blackLabel">Because we have  used your height, you can imagine this as you standing on a tiny earth with an even smaller moon, at your head.<em> How tiny? </em></span></p>
+    </span>
+    </div>
+  <!-- </div> -->
+  <!-- <div class="fade"> -->
+    <div class="results panel-body lightbox2">
+      <span class="bright labelMS">
+      <p><span class="blueLabel">The earth you are standing on, when scaled down to the {{unitName}} scale is just {{newEarth}} {{getUnitType}} in diameter.</span></p>
+      <p><span class="blueLabel">The moon on the {{unitName}} scale is just {{newMoon}} {{getUnitType}}in diameter.</span></p>
+    </span>
+    </div>
+  <!-- </div> -->
+  <div class="spaceView">
   </div>
-<div class="results jumbotron">
-The earth on the {{unitName}} scale is {{newEarth}} {{getUnitType}}<br/>
-The moon on the {{unitName}} scale is {{newMoon}} {{getUnitType}}
-</div>
-<div class="spaceView">
-</div>
 
 </div>
+<button  class= "startBtn btn restart" type="button" >Re-start</button>
 </template>

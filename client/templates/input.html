@@ -5,26 +5,33 @@
   </div>
 
 <div class="inputBox2">
+  <div class="labelMS">
+<p><span class="blackLabel">OK so we are going to call your unit </span><span class="blueLabel">the {{userUnit}}.</span><span class="blackLabel"> Now let's create this new unit of measurement based on your height. Add your height below in either Meters and Centemeters or in Feet and Inches.</span></p>
+<p><span class="blackLabel">You can swap between metric and imperial using the toggle switch.</span></p>
+  </div>
   <div class="unitSwitchBox">
 
     <div class=" toggle unitM">
       <div class="labelM">
-        <span class="redTape">
+        <span class="redLabel">
           Metric
         </span>
       </div>
     </div>
 
-    <div class="toggle unitToggle redTape">
+    <!-- <div class="toggle unitToggle redLabel">
       <input type="radio" id="system1" name="system" value="metric">
       <label for="contactChoice1">metric</label>
       <input type="radio" id="system2" name="system" value="imperial">
       <label for="contactChoice1">imperial</label>
+    </div> -->
+    <div class= "toggle">
+      <button id="flip" class= "skuo skuoButton"></button>
     </div>
 
     <div class="toggle unitI">
       <div class="labelM">
-        <span class="redTape ">
+        <span class="redLabel ">
           Imperial
         </span>
       </div>
@@ -40,27 +47,34 @@
 
 </template>
 <template name ="metricInput">
-<form class="metric-input" action="/draw" >
+  <!-- <div class=""> -->
+<form class="metric-input fb alignCenter " action="/draw" >
+    <span class="fb">
      <input  name="meters" id="mIn" type="text" value="" placeholder="meters " class="form-control form-pt1"/>
      <input  name="centemeters" id="cmIn" type="text" value="" placeholder="centemeter" class="form-control form-pt2"/>
-     <input  type="submit" value="Submit" class="metric-input btn btn-primary"/>
-
+   </span>
+     <input  type="submit" value="" class=" metric-input btn brb"/>
+     <span class="labelM redLabel" > Calibrate</span>
 </form>
 </template>
 
-<template name="generalInput">
-  <form class="general-input" action="/draw"  >
+<!-- <template name="generalInput">
+  <form class="general-input " action="/draw"  >
     <input  name="{{mainUnitName}}" id="{{mainUnitId}}" type="text" value="" placeholder="{{mainUnitPlaceholder}} " class="form-control form-pt1"/>
     <input  name="{{secondUnitName}}" id="{{secondUnitId}}" type="text" value="" placeholder="{{seconsUnitPlaceholder}}" class="form-control form-pt2"/>
-    <input  type="submit" value="Submit" class="general-input btn btn-primary"/>
+    <input  type="submit" value="" class="general-input btn brb"/>
+
   </form>
-</template>
+</template> -->
 
 <template name="imperialInput">
-  <form class="imperial-input" action="/draw"  >
+  <form class="imperial-input fb alignCenter" action="/draw"  >
+    <span class="fb">
     <input  name="feet" id="ftIn" type="text" value="" placeholder="feet " class="form-control form-pt1"/>
     <input  name="inches" id="inIn" type="text" value="" placeholder="inches" class="form-control form-pt2"/>
-    <input  type="submit" value="Submit" class="imperial-input btn btn-primary"/>
+    </span>
+    <input  type="submit" value="" class="imperial-input btn brb alignCenter"/>
+    <span class="labelM redLabel"> Calibrate</span>
   </form>
 </template>
 <template name="noInput">
