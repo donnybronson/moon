@@ -342,7 +342,11 @@ margin: 8px;
 padding: 4px;
 padding-left: 5px;
 
-
+}
+.steelLabel{
+  background-color: #1a497d;
+  margin: 8px;
+  padding: 4px;
 }
 .labelM{
   font-family: "OCRAS";
